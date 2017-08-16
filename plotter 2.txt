@@ -1,0 +1,6 @@
+post
+s-diag-ax x time 
+s-diag-ax y  pos aus lower 
+s-ax-ty x log
+s-s-s x n 10 1e9
+pl

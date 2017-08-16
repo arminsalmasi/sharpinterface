@@ -1,0 +1,74 @@
+@@ LOGFILE GENERATED ON PC/WINDOWS NT    DATE 2017- 8-10
+@@ moving interface in Fcc->bcc transformation in Fe-0.2wt%C at 1120 - Computational methods course -sharp interface assignment - 2017                                                                                                                          
+@@ case one: both ferrite and austenite are active and entered
+go da
+def -sys
+def-sys Fe C
+rej ph * all
+rest ph fcc bcc
+get
+
+app mobfe3
+def-sys Fe C
+rej ph * all
+rest ph fcc bcc
+get
+
+
+
+go -m
+
+set-cond global T 0 1020; * N
+
+ent-reg aus
+
+ent-gr aus 20e-4 LINEAR 50
+ 
+ent-phase ACTIVE aus MATRIX fcc
+
+ent-phase 
+INACTIVE 
+aus 
+no 
+bcc 
+1e-5 
+closed
+ 
+ent-com 
+aus 
+fcc 
+w-p 
+C 
+lin 
+2e-1 
+2e-1
+
+s-sim-ti
+1e9
+yes
+7
+1E-05
+1e-05
+ 
+s-sim-con
+0
+1
+2
+no
+act
+yes
+yes
+1
+2
+no
+yes
+no
+save fe2c-2 y
+
+sim
+
+
+
+
+
+

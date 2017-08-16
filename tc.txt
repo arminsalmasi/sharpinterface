@@ -1,0 +1,117 @@
+ Output from POLY-3, equilibrium =     1, label A0  , database: TCFE9   
+
+ Conditions:
+  N=1, T=1020, P=1E5, W(C)=2E-3
+  DEGREES OF FREEDOM 0
+
+ Temperature   1020.00 K (   746.85 C),  Pressure  1.000000E+05
+ Number of moles of components  1.00000E+00,  Mass in grams  5.54423E+01
+ Total Gibbs energy -4.33607E+04,  Enthalpy  2.70959E+04,  Volume  7.25577E-06
+
+ Component               Moles       M-Fraction  Activity   Potential  Ref.stat
+ C                       9.2319E-03  9.2319E-03 1.8048E-01 -1.4520E+04 SER     
+ FE                      9.9077E-01  9.9077E-01 5.8315E-03 -4.3629E+04 SER     
+
+ BCC_A2                      Status ENTERED     Driving force  0.0000E+00
+ Moles 6.9345E-01, Mass 3.8703E+01, Volume fraction 6.9968E-01  Mole fractions:
+ FE  9.99208E-01  C   7.91841E-04
+
+ FCC_A1                      Status ENTERED     Driving force  0.0000E+00
+ Moles 3.0655E-01, Mass 1.6739E+01, Volume fraction 3.0032E-01  Mole fractions:
+ FE  9.71675E-01  C   2.83247E-02
+*******************************************************************************
+ Component               Moles       W-Fraction  Activity   Potential  Ref.stat
+ C                       9.2319E-03  2.0000E-03 1.8048E-01 -1.4520E+04 SER     
+ FE                      9.9077E-01  9.9800E-01 5.8315E-03 -4.3629E+04 SER     
+
+ BCC_A2                      Status ENTERED     Driving force  0.0000E+00
+ Moles 6.9345E-01, Mass 3.8703E+01, Volume fraction 6.9968E-01  Mass fractions:
+ FE  9.99830E-01  C   1.70407E-04
+
+ FCC_A1                      Status ENTERED     Driving force  0.0000E+00
+ Moles 3.0655E-01, Mass 1.6739E+01, Volume fraction 3.0032E-01  Mass fractions:
+ FE  9.93770E-01  C   6.23031E-03
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ Output from POLY-3, equilibrium =     1, label A0  , database: TCFE9   
+
+ Conditions:
+  N=1, T=1020, P=1E5
+ FIXED PHASES
+ BCC_A2=0 
+  DEGREES OF FREEDOM 0
+
+ Temperature   1020.00 K (   746.85 C),  Pressure  1.000000E+05
+ Number of moles of components  1.00000E+00,  Mass in grams  5.46054E+01
+ Total Gibbs energy -4.28049E+04,  Enthalpy  2.98620E+04,  Volume  7.10850E-06
+
+ Component               Moles       M-Fraction  Activity   Potential  Ref.stat
+ C                       2.8325E-02  2.8325E-02 1.8048E-01 -1.4520E+04 SER     
+ FE                      9.7168E-01  9.7168E-01 5.8315E-03 -4.3629E+04 SER     
+
+ FCC_A1                      Status ENTERED     Driving force  0.0000E+00
+ Moles 1.0000E+00, Mass 5.4605E+01, Volume fraction 1.0000E+00  Mole fractions:
+ FE  9.71675E-01  C   2.83247E-02
+
+ BCC_A2                      Status FIXED       Driving force  0.0000E+00
+ Moles 0.0000E+00, Mass 0.0000E+00, Volume fraction 0.0000E+00  Mole fractions:
+ FE  9.99208E-01  C   7.91841E-04
+*******************************************************************************
+ Component               Moles       W-Fraction  Activity   Potential  Ref.stat
+ C                       2.8325E-02  6.2303E-03 1.8048E-01 -1.4520E+04 SER     
+ FE                      9.7168E-01  9.9377E-01 5.8315E-03 -4.3629E+04 SER     
+
+ FCC_A1                      Status ENTERED     Driving force  0.0000E+00
+ Moles 1.0000E+00, Mass 5.4605E+01, Volume fraction 1.0000E+00  Mass fractions:
+ FE  9.93770E-01  C   6.23031E-03
+
+ BCC_A2                      Status FIXED       Driving force  0.0000E+00
+ Moles 0.0000E+00, Mass 0.0000E+00, Volume fraction 0.0000E+00  Mass fractions:
+ FE  9.99830E-01  C   1.70407E-04
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ Output from POLY-3, equilibrium =     1, label A0  , database: TCFE9   
+
+  Output from POLY-3, equilibrium =     1, label A0  , database: TCFE9   
+
+ Conditions:
+  N=1, T=1020, P=1E5
+ FIXED PHASES
+ FCC_A1=0 
+  DEGREES OF FREEDOM 0
+
+ Temperature   1020.00 K (   746.85 C),  Pressure  1.000000E+05
+ Number of moles of components  1.00000E+00,  Mass in grams  5.58123E+01
+ Total Gibbs energy -4.36063E+04,  Enthalpy  2.58731E+04,  Volume  7.32088E-06
+
+ Component               Moles       M-Fraction  Activity   Potential  Ref.stat
+ C                       7.9184E-04  7.9184E-04 1.8048E-01 -1.4520E+04 SER     
+ FE                      9.9921E-01  9.9921E-01 5.8315E-03 -4.3629E+04 SER     
+
+ BCC_A2                      Status ENTERED     Driving force  0.0000E+00
+ Moles 1.0000E+00, Mass 5.5812E+01, Volume fraction 1.0000E+00  Mole fractions:
+ FE  9.99208E-01  C   7.91841E-04
+
+ FCC_A1                      Status FIXED       Driving force  0.0000E+00
+ Moles 0.0000E+00, Mass 0.0000E+00, Volume fraction 0.0000E+00  Mole fractions:
+ FE  9.71675E-01  C   2.83247E-02
+*******************************************************************************
+ Conditions:
+  N=1, T=1020, P=1E5
+ FIXED PHASES
+ FCC_A1=0 
+  DEGREES OF FREEDOM 0
+
+ Temperature   1020.00 K (   746.85 C),  Pressure  1.000000E+05
+ Number of moles of components  1.00000E+00,  Mass in grams  5.58123E+01
+ Total Gibbs energy -4.36063E+04,  Enthalpy  2.58731E+04,  Volume  7.32088E-06
+
+ Component               Moles       W-Fraction  Activity   Potential  Ref.stat
+ C                       7.9184E-04  1.7041E-04 1.8048E-01 -1.4520E+04 SER     
+ FE                      9.9921E-01  9.9983E-01 5.8315E-03 -4.3629E+04 SER     
+
+ BCC_A2                      Status ENTERED     Driving force  0.0000E+00
+ Moles 1.0000E+00, Mass 5.5812E+01, Volume fraction 1.0000E+00  Mass fractions:
+ FE  9.99830E-01  C   1.70407E-04
+
+ FCC_A1                      Status FIXED       Driving force  0.0000E+00
+ Moles 0.0000E+00, Mass 0.0000E+00, Volume fraction 0.0000E+00  Mass fractions:
+ FE  9.93770E-01  C   6.23031E-03

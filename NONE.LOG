@@ -1,0 +1,73 @@
+LOGFILE GENERATED ON PC/WINDOWS NT    DATE 2017- 8-11
+                                                                                                                                                                                                                                                                 
+
+ 
+ 
+ 
+go da
+def+sys
+def-sys
+fe c
+rej ph *
+rest fcc bcc
+rest ph fcc bcc
+get
+go poly
+s-c n=1 t=1020 p=1e5 w(c)=0.002
+c-e
+l-e
+SCREEN
+?
+VXCS
+l-e
+SCREEN
+VWCS
+ch-stat
+ph
+bcc
+fix
+0
+l-c
+s-c w(c)=none
+l-c
+c-e
+l-e
+SCREEN
+VCXS
+l-e
+SCREEN
+vcws
+l-c
+ch-stat
+PHASES
+bcc
+fix
+1
+l-c
+c-e
+ch-stst
+ch-stat
+ph
+bcc
+ENTERED
+0
+ 
+ 
+l-c
+s-c
+w(c)=2e-3
+c-e
+l-e
+SCREEN
+VWCS
+ch-stat
+ph
+fcc
+fix
+0
+s-c w(c)=none
+c-e
+l-e  screen vxcs
+l-e sc vwcs
+l-e screen vwcs
+exit
