@@ -6,85 +6,72 @@ t = 1000 %integration time
 dt = 0.0001; %time step
     
 %% Cunstract initial domain and grid 
-  dom = [0, 1e-9, 1e-6]; % domain specification: [left, position of interface, right]
-  np_reg = [5, 5]; % number of points in the domain [phase1, phase2]
-  npts = sum(np_reg)
-  z = [linspace(dom(1,1), dom(1,2), np_reg(1)), ... 
-       linspace(dom(1,2), dom(1,3), np_reg(2))] ; % initial grid cunstruction - linear
-    
+  n_regs = 2;
+  n_el = 2;
+  n_ph = 2;
+  n_el_regs = [2, 2];
+  n_ph_regs = [1, 1];
+  reg1 = [0, 1e-9] ;
+  reg2 = [1e-9, 1e-6]; % domain specification: [left, position of interface, right]
+  np_regs = [5, 5]; % number of points in the domain [phase1, phase2]
+  grid1 = linspace(reg1(1), reg1(2), np_regs(1)); %% grid[tstp, region]
+  grid2 = linspace(reg2(1), reg2(2), np_regs(2)); %% grid[tstp, region]    
 %% Initial LE ad BC
-%[xC-alpha,xFe-alpha
-% xC_Beta ,xFe-Beta 
-% xC_final ,xFe-final ] %ALPHABETICAL ORDER %Final last
-xLE = [ 7.91841/10000, 9.99208/10 ...
-      ; 2.83247/100  , 9.71675/10 ...
-      ; 9.2319/1000  , 9.9077/10  ];
-
-  uLE = [ xLE(1,1)/xLE(2,1), xLE(2,1)/xLE(2,1) ... 
-        ; xLE(1,2)/xLE(2,2), xLE(2,2)/xLE(2,2) ]
+%[alpha/Beta: xC-xFe
+% Beta/alpha: xC-xFe ]
+xLE1 = [ 7.91841E-04, 9.99208E-01 ];
+xLE2 = [ 2.83247E-02, 9.71675E-01 ];
+%[alpha/Beta: uC-uFe
+% Beta/alpha: uC-uFe ]
+uLE1 =  xLE1(1)/xLE1(2);%, xLE1(2)/xLE1(2)];
+uLE2 =  xLE2(1)/xLE2(2);%, xLE2(2)/xLE2(2)];
+  
+xBC1 = [ 7.91841E-04, 9.99208E-01 ];  
+xBC2 = [ 7.91841E-04, 9.99208E-01 ];
+xBC3 = [ 2.83247E-02, 9.71675E-01 ];
+xBC4 = [ 9.23190E-03, 9.90770E-01 ];
+     
+uBC1 =  xBC1(1)/xBC1(2);%, xBC1(2)/xBC1(2) ]; 
+uBC2 =  xBC2(1)/xBC2(2);%, xBC2(2)/xBC2(2) ]; 
+uBC3 =  xBC3(1)/xBC3(2);%, xBC3(2)/xBC3(2) ];
+uBC4 =  xBC4(1)/xBC4(2);%, xBC4(2)/xBC4(2) ]; 
+  
 %% Initial concentration profiles
-x(1,:) = [z(1:np_reg(1,1))*0 + xLE(1,1), z(np_reg(1,1)+1: npts)*0 + xLE(3,1)]%% X(C)
-x(2,:) = [z(1:np_reg(1,1))*0 + xLE(1,2), z(np_reg(1,1)+1: npts)*0 + xLE(3,2)]%% X(Fe)
-u(1,:) = x(1,:)./x(2,:)%% U(C)
-u(2,:) = x(2,:)./x(2,:)%% U(Fe)
+    %% x-u-[tstp, region, phase, element]
+x1(1,:) = grid1 * 0 + xBC1(1);%% x[tstp_1,reg_1,Phase_1:alpha,element_1:C]
+x1(2,:) = grid1 * 0 + xBC1(2);%% x[tstp_1,reg_1,Phase_1:alpha,element_1:Fe]
+
+x2(1,:) = grid2 * 0 + xBC4(1);%% x[tstp_1,reg_2,phase_2:alpha,elemet_1:C]
+x2(2,:) = grid2 * 0 + xBC4(2);%% x[tstp_1,reg_2,phase_2:alpha,elemet_1:Fe]
+
+u1(1,:) = x1(1,:) ./ x1(2,:);%% u[tstp_1,reg_1,Phase_1:alpha,element_1:C]
+
+u2(1,:) = x2(1,:) ./ x2(2,:);%% u[tstp_1,reg_2,phase_2:alpha,elemet_1:C]
+
+
 %% apply boundary condition
-u(1,1) = 10;
-u(1,np_reg(1,1)) = 10;
-u(1,np_reg(1,1)+1) = 10;
-u(1,npts) = 10;
-
-u(2,1) = 10;
-u(2,np_reg(1,1)) = 10;
-u(2,np_reg(1,1)+1) = 10;
-u(2,npts) = 10;
-
+%% region 1
+u1(1,1) = uBC1;
+u1(1,end) = uBC2;
+%% region 2
+u2(1,1) = uBC3;
+u2(1,end) =uBC4;
 %% timestep loop
 for tstp = 1 : t/dt;
     %% update domain, grid amd position of interface
     if tstp < 2
     else
     %% calculate u frations / initial Local equilibrium
-    %% C is 1 - alphabetical order
-    %% Fe is 2 - alphabetical order
-    %% phase sys is 0 
-    %% phase alpha bcc is 1 - alphabetical order
-    %% phase Beta fcc is 2 - alphabetical order
-    % order is Var_element_phase
-    
-    
-    for i = 2 : Npts-1 %% dU/dZ
-      U_C_dotz(i) = ( U_C(i+1) -U_C(i-1) ) / (h(i+1)+h(i))  ;
+    D = 2.5e-10 * u2 + 5.9e-13;
+    dotu = (diff(u2) ./ diff( grid2 )); %D(tstp,2,2,1) .*
+    j = 0;
+    for i = 1 : size(dotu(1))
+     j = j - D(i) * dotu(i);
+     u2(i) = u2(i) - D(i) * dotu(i)
     end
-
-    DU_C_dotz = U_C_dotz(:) .* (2.5e-10 * U_C(:) + 5.9e-13); %% D.dU/dZ
-
-    for i = 2 : Npts-1 %% d(D.dU/dZ)/dz
-      DU_C_dotz_dotz(i) = ( DU_C_dotz(i+1) -DU_C_dotz(i-1) ) / (h(i+1)+h(i))  ;%% dU/dt = d(D.dU/dZ)/dz
-    end
-
-
     %% solve flux equations
-
-    j = sum(DU_C_dotz_dotz(:) .* h(:)); %/ ( u_C_1_init - u_C_inf_init)
-    v =  j * dt / ( u_1_1_init - u_1_0_init);
-
-
+    v = dt * j / (uBC3 - uBC2);
     %% integrate concentration values 
-    U_C(:) = U_C(:) + DU_C_dotz_dotz(:) * dt
-    UKEEP(cnt,:) =  U_C(:);
-    cnt
-    U_C(1) = bc_C_1_0;
-    U_Fe(1) = bc_Fe_1_0;
-    U_C(npts(1)) = bc_C_1_1;
-    U_Fe(npts(1)) = bc_Fe_1_1;
-    U_C(npts(1)+1) = bc_C_2_0;
-    U_Fe(npts(1)+1) = bc_Fe_2_0;
-    U_C(Npts) = bc_C_2_1;
-    U_Fe(Npts) = bc_Fe_2_1;
-    %% finalize timestep
-
-    %% check if mass concervation is violated (only if there is impingment or not!)
-
-    %% check convergance?! or just simply jump to the next time step 
+    
     end
 end
