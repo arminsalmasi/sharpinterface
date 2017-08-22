@@ -3,9 +3,9 @@ clc; clear variables, close all
 format long
 
 % time setting
-t = 5200; %integration time
-dt = 0.001; %time step
-plot_t = [1, 100, 200, 500, 1000, 3600, 5200];
+t = 1000; %integration time
+dt = 0.01; %time step
+plot_t = [1, 100, 1000];
     
 %% time loop
 for tstp = 1 : floor(t/dt);   
@@ -35,7 +35,7 @@ for tstp = 1 : floor(t/dt);
           er = 'larger than doamin'
           tstp
           tstp*dt
-          plot_t(1,end)= tstp*dt;
+          
           break
       else
         % update keepers
@@ -56,11 +56,10 @@ end
 figure
 hold on
   for i = 1: size(plot_t,2)
-    t_plot =floor(plot_t(1,i)/dt)
-    grid1_plot(:) = grid1_keep(t_plot,:);
-    grid2_plot(:) = grid2_keep(t_plot,:);
-    u1_plot(:,:) = u1_keep(t_plot,:,:);     
-    u2_plot(:,:) = u2_keep(t_plot,:,:);     
+    grid1_plot(:) = grid1_keep(plot_t(i,:));
+    grid2_plot(:) = grid2_keep(plot_t(i,:));
+    u1_plot(:,:) = u1_keep(plot_t(i,:,:));     
+    u2_plot(:,:) = u2_keep(plot_t(i,:,:));     
     plot( [grid1_plot,grid2_plot], [u1_plot(1,:),u2_plot(1,:)] );
   end
 figure
@@ -98,6 +97,11 @@ end
 function [er, u1, u2, grid1, grid2, reg1,reg2, np_regs, uBC1] = do_init()
     format long
     er = true;
+    n_regs = 2;
+    n_el = 2;
+    n_ph = 2;
+    n_el_regs = [2, 2];
+    n_ph_regs = [1, 1];
     reg1 = [0, 1e-9] ;
     reg2 = [1e-9, 5e-5]; % domain specification: [left, position of interface, right]
     np_regs = [10, 1000]; % number of points in the domain [phase1, phase2]
