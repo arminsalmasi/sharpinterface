@@ -1,9 +1,0 @@
-post
-s-diag-ax x dist global
-s-diag-ax y w-p c
-s-pl-cond time 1e2 1e3 2e3 5e3 7e3
-s-s-s x n 0 0.0006
-s-ax-ty x lin
-pl
-
-

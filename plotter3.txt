@@ -1,6 +1,0 @@
-post
-s-diag-ax x time 
-s-diag-ax y velocity aus lower
-s-ax-ty x log
-s-s-s x n 10 1e9
-pl

@@ -52,11 +52,21 @@ hold off
 figure
 hold on
     plot(d.save_times ,d.velocity_save);
-    set(gca,'Yscale', 'log')
+    set(gca,'Xscale', 'log')
     title('velocity of interface - time')
     xlim([0,d.t]);
     xlabel('time seconds')
     ylabel('velocity of interface m/s')   
+hold off
+
+figure
+hold on
+    plot(d.save_times ,d.reg1_save(:,2));
+    set(gca,'Xscale', 'log')
+    title('position of interface - time')
+    xlim([0,d.t]);
+    xlabel('time seconds')
+    ylabel('position of interface meter')   
 hold off
 
 

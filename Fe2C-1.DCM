@@ -2,7 +2,6 @@
 @@ moving interface in Fcc->bcc transformation in Fe-0.2wt%C at 1120 - Computational methods course -sharp interface assignment - 2017                                                                                                                          
 @@ case one: both ferrite and austenite are active and entered
 go da
-def -sys
 def-sys Fe C
 rej ph * all
 rest ph fcc bcc
@@ -29,14 +28,14 @@ yes
  
  
 en-grid
-FER
+fer
 1e-9
 LINEAR
 10
  
 ent-gr
 aus
-20e-4
+2e-3
 LINEAR
 50
  
@@ -71,11 +70,11 @@ lin
 2e-1
 
 s-sim-ti
-1e9
+36000
 yes
-7
+3600
 1E-05
-1e-05
+1e-08
  
 s-sim-con
 0
@@ -98,3 +97,27 @@ set-inter
 sim
 
 
+@@post
+@@s-diag-ax x dist global
+@@s-diag-ax y u-fraction c
+@@s-pl-cond time 1e-3 7200  14400  21600  28800 36000
+@@s-s-s x n 0 2e-3
+@@s-ax-ty x lin
+@@lab_cu Y
+@@pl
+
+@@post
+@@s-diag-ax x time 
+@@s-diag-ax y  pos aus lower 
+@@s-ax-ty x log
+@@s-s-s x n 10 36000
+@@lab_cu Y
+@@pl
+
+@@post
+@@s-diag-ax x time 
+@@s-diag-ax y velocity aus lower
+@@s-ax-ty x log
+@@s-s-s x n 10 36000
+@@lab_cy y
+@@pl
